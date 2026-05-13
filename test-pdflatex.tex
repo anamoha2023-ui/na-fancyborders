@@ -1,0 +1,32 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{multicol}
+\usepackage{lipsum} 
+\usepackage{na-fancyborders}
+\setlength{\columnsep}{2cm}
+\begin{document}
+% تفعيل الإطار الأول
+\activateBGdefault
+\lipsum[1]
+\newpage
+% تنظيف الصفحة من الإطار السابق وتفعيل الإطار الثاني
+\ClearShipoutPicture
+\activateBGone
+\lipsum[1]
+\newpage
+% تنظيف الصفحة من الإطار السابق وتفعيل الإطار الثاني
+\ClearShipoutPicture
+\activateBGtwo
+\lipsum[1]
+\newpage
+\ClearShipoutPicture
+\activateBGfour
+\lipsum[1]
+\newpage
+\ClearShipoutPicture       % مسح أي إطارات سابقة
+\activateBGthree           % تفعيل الزخارف الوسطية (بدون إطار خارجي)
+% --- بدء نظام العمودين ---
+\begin{multicols*}{2}
+\lipsum[1-4]
+\end{multicols*}
+\end{document}

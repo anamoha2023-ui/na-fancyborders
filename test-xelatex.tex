@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{multicol}
+\usepackage{lipsum} % لتوليد نص تجريبي
+% 1. استدعاء حزمة الزخارف المعدلة
+\usepackage{na-fancyborders}
+\setlength{\columnsep}{2cm}
+\usepackage{polyglossia}
+\setmainlanguage[numerals=maghrib]{arabic}
+\setotherlanguage{french}
+
+% 3. إعدادات الخطوط (تأكد من وجود الخطوط على جهازك)
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.2]{Amiri}
+\newfontfamily\arabicfontsf[Script=Arabic,Scale=1.2]{Arial}
+
+% 4. إعدادات الهوامش (Geometry) لتناسب الإطارات
+
+
+\begin{document}
+
+% تفعيل الإطار الأول
+\activateBGdefault
+\section*{الصفحة الأولى}
+هنا تكتب النص العربي الخاص بك. هذا الإطار سيطبق على هذه الصفحة فقط.
+\newpage
+% تنظيف الصفحة من الإطار السابق وتفعيل الإطار الثاني
+\ClearShipoutPicture
+\activateBGone
+\section*{الصفحة الثانية}
+هنا نص الصفحة الثانية بإطار مختلف تماماً.
+\newpage
+% تنظيف الصفحة من الإطار السابق وتفعيل الإطار الثاني
+\ClearShipoutPicture
+\activateBGtwo
+\section*{الصفحة الثانية}
+هنا نص الصفحة الثانية بإطار مختلف تماماً.
+
+\newpage
+\ClearShipoutPicture
+\activateBGfour
+\section*{الصفحة الثالثة}
+هذا هو الإطار الذي يحتوي على ترقيم الصفحة في الأسفل بشكل فني.
+\newpage
+\ClearShipoutPicture       % مسح أي إطارات سابقة
+\activateBGthree           % تفعيل الزخارف الوسطية (بدون إطار خارجي)
+
+% --- بدء نظام العمودين ---
+\begin{multicols*}{2}
+\lipsum[1-4]
+\end{multicols*}
+\end{document}

@@ -1,0 +1,217 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2026 by NAAM MOAMED (الأستاذ ناعم محمد)
+% -------------------------------------------------------
+% [AR] هذا العمل متاح تحت شروط رخصة لاتيك العامة (LPPL)، الإصدار 1.3 أو أحدث.
+% [EN] This work may be distributed and/or modified under the conditions 
+%      of the LaTeX Project Public License, version 1.3 or later.
+% -------------------------------------------------------
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{na-fancyborders.dtx}
+\documentclass{ltxdoc}
+\usepackage{na-fancyborders}
+\usepackage{dashbox}
+\usepackage[explicit]{titlesec}
+\usepackage{polyglossia}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,backgrounds}
+% --- إعدادات اللغة العربية (من حزمتك السابقة) ---
+\setmainlanguage[numerals=maghrib,locale=algeria]{arabic}
+\setotherlanguage{english}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.2]{Amiri} 
+\newfontfamily\na[Script=Arabic,Scale=1.2]{Arial} 
+\newfontfamily\arabicfontsf[Script=Arabic,Scale=1.2]{Arial}
+
+\renewcommand{\thesection}{\arabic{section}}
+\titleformat{\section}
+{\bf\Large\sffamily}
+{\tikzpicture[baseline=(a.base)]
+\node[text=white,scale=1,anchor=east,draw=blue!50!black,
+fill=red!50!black] (a) {\thesection};
+\node [text=black,anchor=east] at (a.west) (2){\large\textarabic{\bf\sffamily #1}};
+\endtikzpicture}
+{0pt}{}
+\titleformat{\subsection}
+{\bf}
+{\tikzpicture[baseline=(a.base)]
+\node[text=white,scale=1,anchor=east,draw=blue!50!black,
+fill=blue!50!black] (a) {\thesubsection};
+\node [text=black,anchor=east] at (a.west) (2){\large\textarabic{\bf\sffamily #1}};
+\endtikzpicture}
+{0pt}{}
+\setnonlatin
+\begin{document}
+\activateBGdefault
+\DocInput{na-fancyborders.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \begin{center}
+% \lbox{\fbox{
+%   \begin{minipage}{0.85\textwidth}
+%     \centering \vspace{0.5em}
+%     \Large \textbf{\textarabic{\na حزمة الإطارات الفنية} \textsf{na-fancyborders}} \\[0.5em]
+%     \large \textbf{\textarabic{الأستاذ ناعم محمد} \LR{(NAAM MOAMED)}} \\[0.3em]
+%     \small \textbf{\textarabic{الإصدار 1.0 --- ماي 2026}} \vspace{0.5em}
+%   \end{minipage}
+% }}
+% \end{center}
+%
+% \section{\textarabic{الترخيص}}
+% \textarabic{هذه الحزمة ملكية فكرية للأستاذ ناعم محمد. وهي مرخصة تحت رخصة LPPL الإصدار 1.3 أو أحدث.}
+%
+% \section{\textarabic{دليل الأنماط ومعاينتها}}
+%
+%\subsection{\textarabic{الإطار الافتراضي \LR{(Par Défaut)}}}
+% \textarabic{يعتبر هذا النمط هو الخيار القياسي للحزمة، حيث يرسم إطاراً مستطيلاً بسيطاً وأنيقاً يحيط بكامل الصفحة ليعطي مظهراً رسمياً للمستندات.}
+% \begin{center}
+% \begin{tikzpicture}[scale=0.1] 
+%   \draw[thick] (0,0) rectangle (10,14); 
+% \end{tikzpicture}
+% \end{center}
+% \textarabic{لتفعيل هذا الإطار، استخدم الأمر:} \cs{activateBGdefault}
+% \subsection{\textarabic{1. النمط الهندسي} \cs{activateBGone}}
+% \textarabic{إطار رسمي بزوايا حادة للامتحانات.}
+% \begin{center}
+% \begin{tikzpicture}[scale=0.1] \draw (0,0) rectangle (10,14); \draw[ultra thick] (0,14)--(2,14) (0,14)--(0,12); \end{tikzpicture}
+% \end{center}
+%
+% \subsection{\textarabic{2. النمط المربع} \cs{activateBGtwo}}
+% \textarabic{إطار فني يعتمد على المربعات في الزوايا.}
+% \begin{center}
+% \begin{tikzpicture}[scale=0.1] \draw (0,0) rectangle (10,14); \fill[gray] (0,13) rectangle (1,14); \fill[gray!40] (9,0) rectangle (10,1); \end{tikzpicture}
+% \end{center}
+%
+% \subsection{\textarabic{3. نمط الزخرفة الوسطية} \cs{activateBGthree}}
+% \textarabic{مخصص لتقسيم محتوى الصفحة.}
+% \begin{center}
+% \begin{tikzpicture}[scale=0.1] \draw (0,0) rectangle (10,14); \draw (5,1)--(5,13); \fill (5,13) circle (0.5); \end{tikzpicture}
+% \end{center}
+%
+% \subsection{\textarabic{4. النمط الجانبي} \cs{activateBGfour}}
+% \textarabic{زخرفة مزدوجة على حافة الصفحة.}
+% \begin{center}
+% \begin{tikzpicture}[scale=0.1] \draw (0,0) rectangle (10,14); \draw[double] (8.5,1)--(8.5,13); \end{tikzpicture}
+% \end{center}
+%
+% \StopEventually{}
+%
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{na-fancyborders}[2026/05/09 Custom Artistic Page Frames]
+
+% المكتبات الأساسية
+\RequirePackage{tikz}
+\RequirePackage{eso-pic}
+\usetikzlibrary{calc}
+
+% إعدادات افتراضية
+\parindent=0pt
+
+% --- المحرك الداخلي للرسومات (أوامر مساعدة) ---
+
+\newcommand{\pageline}[1]{
+    \draw[black,line width=1pt] ([xshift=#1pt+1cm,yshift=5pt+1cm]current page.south west) -- ([xshift=#1pt+1cm,yshift=-5pt-1cm]current page.north west) arc [start angle=180, end angle=90, radius=5pt];
+    \draw[black,line width=1pt] ([xshift=#1pt+1cm,yshift=5pt+1cm]current page.south west) arc [start angle=180, end angle=270, radius=5pt];
+    \draw[black,line width=1pt] ([xshift=-#1pt-1cm,yshift=5pt+1cm]current page.south east) -- ([xshift=-#1pt-1cm,yshift=-5pt-1cm]current page.north east) arc [start angle=0, end angle=90, radius=5pt];
+    \draw[black,line width=1pt] ([xshift=-#1pt-1cm,yshift=5pt+1cm]current page.south east) arc [start angle=360, end angle=270, radius=5pt];
+}
+
+\newcommand{\rosolle}[3]{
+    \foreach \i in {0.3,0.6,0.9}{
+        \fill[black!30!gray] ([xshift=-5pt,yshift=#1pt]$ (#2)!\i!(#3) $) -- ++ (19pt,-1.5pt) circle (4pt);
+        \fill[black] ([xshift=-5pt,yshift=#1pt]$ (#2)!\i!(#3) $) -- ++ (20pt,-1.5pt) circle (4pt);
+        \fill[black!30!gray] ([xshift=-25pt,yshift=#1pt]$ (#2)!\i!(#3) $) -- ++ (21pt,-1.5pt) circle (4pt);
+        \fill[black] ([xshift=-25pt,yshift=#1pt]$ (#2)!\i!(#3) $) -- ++ (20pt,-1.5pt) circle (4pt);
+        \fill[left color=black!70!white,right color=white] ([xshift=-5pt,yshift=#1pt]$ (#2)!\i!(#3) $) arc [start angle=90, end angle=180, radius=1pt] -- ++ (0pt,-1pt) arc [start angle=180, end angle=270, radius=1pt] -- ++ (10pt,0pt) -- ++ (0pt,3pt) -- cycle;
+        \fill[left color=white,right color=black!70!white] ([xshift=5pt,yshift=#1pt]$ (#2)!\i!(#3) $) -- ++ (0pt,-3pt) -- ++ (10pt,0pt) arc [start angle=270, end angle=360, radius=1pt] -- ++ (0pt,1pt) arc [start angle=0, end angle=90, radius=1pt] -- cycle;
+    }
+}
+
+\newcommand{\narosolle}[2][B]{\rosolle{12}{#2}{#1}\rosolle{0}{#2}{#1}\rosolle{-12}{#2}{#1}}
+
+\newcommand{\rosol}[3]{
+    \fill[black!30!gray] ([xshift=-13pt,yshift=#1pt]$ (#2)!.5!(#3) $) circle (4pt);
+    \fill[left color=black!70!white,right color=white] ([xshift=-15pt,yshift=1pt+#1pt]$ (#2)!.5!(#3) $) arc [start angle=90, end angle=180, radius=1pt] -- ++ (0pt,-1pt) arc [start angle=180, end angle=270, radius=1pt] -- ++ (10pt,0pt) -- ++ (0pt,3pt) -- cycle;
+    \fill[left color=white,right color=black!70!white] ([xshift=-5pt,yshift=1pt+#1pt]$ (#2)!.5!(#3) $) -- ++ (0pt,-3pt) -- ++ (10pt,0pt) arc [start angle=270, end angle=360, radius=1pt] -- ++ (0pt,1pt) arc [start angle=0, end angle=90, radius=1pt] -- cycle;
+}
+
+\newcommand{\narosol}[2][B]{\rosol{12}{#2}{#1}\rosol{0}{#2}{#1}\rosol{-12}{#2}{#1}}
+
+% --- أوامر تفعيل الأنماط (Styles) ---
+
+\newcommand\activateBGdefault{\AddToShipoutPictureBG{\tikzpicture[overlay,remember picture]
+    \coordinate (A) at ([yshift=-1cm]current page.north);
+    \coordinate (B) at([yshift=-1cm,xshift=-1cm]current page.north east);
+    \coordinate (C) at([yshift=-1cm,xshift=1cm]current page.north west);
+    \coordinate (D) at([yshift=1cm,xshift=1cm]current page.south west);
+    \coordinate (E) at([yshift=1cm,xshift=-1cm]current page.south east);
+    \draw[line width=2pt](B)rectangle(D);
+    \fill[black] ([xshift=2pt,yshift=-2pt]C) -- ++ (0pt,-8pt) arc [start angle=270, end angle=360, radius=8pt] -- cycle;
+    \fill[black] ([xshift=-2pt,yshift=-2pt]B) -- ++ (-8pt,0pt) arc [start angle=180, end angle=270, radius=8pt] -- cycle;
+    \fill[black] ([xshift=-2pt,yshift=2pt]E) -- ++ (0pt,8pt) arc [start angle=90, end angle=180, radius=8pt] -- cycle;
+    \fill[black] ([xshift=2pt,yshift=2pt]D) -- ++ (8pt,0pt) arc [start angle=0, end angle=90, radius=8pt] -- cycle;
+    \draw[black!50,line width=.5pt] ([yshift=-4pt]A|-B) -- ([xshift=-12pt,yshift=-4pt]B) arc [start angle=180, end angle=270, radius=8pt] -- ([xshift=-4pt,yshift=12pt]E) arc [start angle=90, end angle=180, radius=8pt] -- ([xshift=12pt,yshift=4pt]D) arc [start angle=0, end angle=90, radius=8pt] -- ([xshift=4pt,yshift=-12pt]C) arc [start angle=270, end angle=360, radius=8pt] -- ([yshift=-4pt]C-|A) ;
+\endtikzpicture}}
+
+\newcommand\activateBGone{\AddToShipoutPictureBG{\tikzpicture[overlay,remember picture]
+    \coordinate (A) at ([yshift=-1cm]current page.north);
+    \coordinate (B) at([yshift=-1cm,xshift=-1cm]current page.north east);
+    \coordinate (C) at([yshift=-1cm,xshift=1cm]current page.north west);
+    \coordinate (D) at([yshift=1cm,xshift=1cm]current page.south west);
+    \coordinate (E) at([yshift=1cm,xshift=-1cm]current page.south east);
+    \draw[fill=black, draw=black] (B) -- ++ (-10mm,0mm) -- ++ (.5mm,-.5mm) -- ++ (9mm,0mm) -- ++ (0mm, -9mm) -- ++ (.5mm,-.5mm) -- cycle;
+    \draw[fill=black, draw=black] (D) -- ++ (10mm,0mm) -- ++ (-.5mm,.5mm) -- ++ (-9mm,0mm) -- ++ (0mm, 9mm) -- ++ (-.5mm,.5mm) -- cycle;
+    \draw[thick] (A) -- (C) -- ([yshift=11mm]D)-- ++ (1.2mm,-1.2mm) -- ([xshift=1.2mm,yshift=1.2mm]D) -- ++ (8.6mm,0mm) -- ++ (1.2mm,-1.2mm) -- (E) -- ([yshift=-11mm]B)-- ++ (-1.2mm,1.2mm) -- ([xshift=-1.2mm,yshift=-1.2mm]B) -- ++ (-8.6mm,0mm) -- ++ (-1.2mm,1.2mm) -- (A);
+\endtikzpicture}}
+
+\newcommand\activateBGtwo{\AddToShipoutPictureBG{\tikzpicture[overlay,remember picture]
+    \coordinate (A) at ([yshift=-1cm]current page.north);
+    \coordinate (B) at([yshift=-1cm,xshift=-1cm]current page.north east);
+    \coordinate (C) at([yshift=-1cm,xshift=1cm]current page.north west);
+    \coordinate (D) at([yshift=1cm,xshift=1cm]current page.south west);
+    \coordinate (E) at([yshift=1cm,xshift=-1cm]current page.south east);
+    \draw[black!40!white,line width=.5pt] (A|-B)--([xshift=-3pt]B) -- ++ (0,-3pt);
+    \draw[black!40!white,line width=.5pt] ([xshift=-3*4.5pt]B) -- ++ (0,-3*3.5pt) -- ++ (3pt,0);
+    \draw[black!40!white,line width=.5pt] ([yshift=-3pt]A|-B)--([yshift=-3pt,xshift=-3*6pt]B);
+    \draw[black!40!white,line width=.5pt] (A|-C)--([xshift=3pt]C) -- ([xshift=3pt,yshift=3*6pt]D);
+    \draw[black!40!white,line width=.5pt] ([yshift=-3pt]A|-C)--([yshift=-3pt]C) -- ([yshift=3pt]D) -- ++ (3pt,0);
+    \draw[black!40!white,line width=.5pt] ([yshift=3*4.5pt]D) -- ++ (3*3.5pt,0) -- ++ (0,-3pt);
+    \draw[black,line width=.5pt] ([xshift=-3pt,yshift=-3pt]B) -- ++ (3pt,0) -- ([yshift=3pt]E) -- ([xshift=3*6pt,yshift=3pt]D);
+    \draw[black,line width=.5pt] ([xshift=-3*3.5pt,yshift=-3*3.5pt]B) -- ++ (0,-3pt) -- ++ (3*3.5pt,0);
+    \draw[black,line width=.5pt] ([xshift=-3pt,yshift=-3*6pt]B) -- ([xshift=-3pt]E) -- ([xshift=3pt]D) -- ++ (0,3pt);
+    \draw[black,line width=.5pt] ([xshift=3*4.5pt]D) -- ++ (0,3*3.5pt) -- ++ (-3pt,0);
+    \fill[black!70!white,line width=.5pt] ([xshift=-3pt,yshift=-3pt]B) -- ++ (0,-3*2.5pt) -- ++ (-3*2.5pt,0) -- ++ (0,3*2.5pt) -- cycle;
+    \fill[black!70!white,line width=.5pt] ([xshift=3pt,yshift=3pt]D) -- ++ (0,3*2.5pt) -- ++ (3*2.5pt,0) -- ++ (0,-3*2.5pt) -- cycle;
+\endtikzpicture}}
+
+\newcommand\activateBGthree{\AddToShipoutPictureBG{\tikzpicture[overlay,remember picture]
+    \path[fill=black!50,thick,rounded corners=5pt]([yshift=0.85cm,xshift=0.83cm] current page.south west) rectangle([yshift=-0.85cm,xshift=-0.83cm] current page.north east);  
+    \path[draw=black,fill=white,thick]([yshift=5pt+1cm,xshift=1cm]current page.south west) -- ([yshift=-5pt-1cm,xshift=1cm]current page.north west) arc [start angle=180, end angle=90, radius=5pt] -- ([xshift=-5pt-1cm,yshift=-1cm]current page.north east) arc [start angle=90, end angle=0, radius=5pt] -- ([yshift=5pt+1cm,xshift=-1cm]current page.south east) arc [start angle=360, end angle=270, radius=5pt] -- ([xshift=5pt+1cm,yshift=1cm]current page.south west) arc [start angle=270, end angle=180, radius=5pt] -- cycle;  
+    \draw[line width=3pt]([yshift=-1cm]current page.north)--([yshift=1cm]current page.south);
+    \pageline{1.5} \pageline{3} \pageline{4.5}     
+    \coordinate (A) at ([xshift=-0.15cm,yshift=-1cm]current page.north);
+    \coordinate (C) at ([xshift=-0.15cm,yshift=1cm]current page.south);
+    \coordinate (B) at ($(A)!.5!(C)$); 
+    \narosolle{A} \narosolle{C}      
+\endtikzpicture}}
+
+\newcommand\activateBGfour{\AddToShipoutPictureBG{\tikzpicture[overlay,remember picture]
+    \coordinate (M) at([yshift=-1cm,xshift=-1cm]current page.north east);
+    \coordinate (N) at([yshift=1cm,xshift=1cm]current page.south west);
+    \path[fill=black!50,thick,rounded corners=5pt](M) rectangle(N);  
+    \path[fill=white,draw,thick,rounded corners=5pt]([xshift=-1mm,yshift=-1mm]M) rectangle([xshift=3mm,yshift=1mm] N);
+    \coordinate (A) at ([yshift=-1cm,xshift=-1cm]current page.north east);
+    \coordinate (B) at ([xshift=-1cm]current page.east);
+    \coordinate (C) at([yshift=1cm,xshift=-1cm]current page.south east);
+    \path ([yshift=1cm,xshift=1cm]current page.south west)--([yshift=1cm,xshift=-1cm]current page.south east);
+    \narosol{A} \narosol{C}  
+\endtikzpicture}}
+%</package>
+% \Finale
+\endinput
